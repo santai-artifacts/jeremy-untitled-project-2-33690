@@ -13,9 +13,9 @@
     --panel: #131a2b;
     --panel-2: #1b2540;
     --grid: #161d30;
-    --accent: #4ade80;
-    --accent-dim: #22c55e;
-    --food: #f472b6;
+    --accent: #f472b6;
+    --accent-dim: #ec4899;
+    --food: #4ade80;
     --text: #e6ecff;
     --muted: #7c88a8;
     --radius: 18px;
@@ -384,9 +384,9 @@
     const pulse = 0.5 + 0.5 * Math.sin(performance.now() / 260);
     const pad = 3 + pulse * 1.5;
     ctx.save();
-    ctx.shadowColor = '#f472b6';
+    ctx.shadowColor = '#4ade80';
     ctx.shadowBlur = 14;
-    ctx.fillStyle = '#f472b6';
+    ctx.fillStyle = '#4ade80';
     roundRect(food.x * CELL + pad, food.y * CELL + pad, CELL - pad * 2, CELL - pad * 2, 6);
     ctx.restore();
   }
@@ -396,9 +396,8 @@
     for (let i = snake.length - 1; i >= 0; i--) {
       const s = snake[i];
       const t = i / Math.max(1, snake.length - 1);
-      // head bright, tail dimmer
-      const g = Math.round(74 + (1 - t) * 60);
-      ctx.fillStyle = i === 0 ? '#86efac' : `rgb(${34 + (1-t)*30}, ${197 - t*90}, ${94 - t*30})`;
+      // head bright pink, tail dimmer pink
+      ctx.fillStyle = i === 0 ? '#f9a8d4' : `rgb(${244 - t*60}, ${114 - t*50}, ${182 - t*60})`;
       const inset = 2 + (i === 0 ? pop * 1.2 : 0);
       roundRect(s.x * CELL + inset, s.y * CELL + inset, CELL - inset * 2, CELL - inset * 2, i === 0 ? 7 : 5);
     }
